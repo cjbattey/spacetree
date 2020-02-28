@@ -1,13 +1,14 @@
 #spacetree
 library(plot3D);library(sp);library(ape)
 
-nsamples <- 5;dispersal <- 20;maxgen <- 40
+nsamples <- 3;dispersal <- 15;maxgen <- 40
 x <- runif(nsamples,0,100)
 y <- runif(nsamples,0,100)
 z <- rep(0,nsamples)
 samples <- data.frame(x,y,z,sample=letters[1:nsamples],stringsAsFactors = F)
 testsamples <-  samples
 
+samples <- testsamples
 s2 <- samples
 coalsamples <- c()
 node_ages <- rep(0,nsamples)
@@ -96,7 +97,7 @@ for(i in 0:(max(samples$z))){
   for(j in letters[1:nsamples]){
     b <- samples[grepl(as.character(j),samples$sample),]
     b <- b[b$z %in% c(i,i+1),]
-    segments3D(x0=b$x[1],x1=b$x[2],y0=b$y[1],y1=b$y[2],z0=b$z[1],z1=b$z[2],add=T,col="steelblue3")
+    segments3D(x0=b$x[1],x1=b$x[2],y0=b$y[1],y1=b$y[2],z0=b$z[1],z1=b$z[2],add=T,col="forestgreen",cex=0.3)
     points3D(x=b$x[2],y=b$y[2],z=b$z[2],add=T,cex=0.5)
   }
 }
